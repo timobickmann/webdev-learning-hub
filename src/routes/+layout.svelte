@@ -12,10 +12,13 @@
 			</svelte:fragment>
 			<strong class="text-xl">Timos Learning Hub</strong>
 			<svelte:fragment slot="trail">
-				<a href="https://github.com/timobickmann/webdev-learning-hub"><GithubIcon /> </a>
+				<a
+					class="btn-icon hover:variant-soft-primary"
+					href="https://github.com/timobickmann/webdev-learning-hub"
+					><GithubIcon />
+				</a>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
-
-	<slot />
+	<main class="container h-full mx-auto flex justify-center items-center"><slot /></main>
 </AppShell>

@@ -3,7 +3,12 @@
 @tailwind utilities;
 @tailwind variants;
 
+@font-face {
+	font-family: 'Inter';
+	src: url('/fonts/Inter-VariableFont_slnt,wght.ttf');
+}
+
 html,
 body {
-	@apply h-full overflow-hidden;
+	@apply h-full overflow-hidden bg-gradient-to-tr from-surface-800 to-surface-900;
 }
