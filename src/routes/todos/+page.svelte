@@ -24,16 +24,16 @@
 	</div>
 {/if}
 
-<div class="flex flex-col sm:flex-row gap-5 w-full my-5">
-	<div class="space-y-2 sm:w-1/3 w-full">
+<div class="flex flex-col md:flex-row gap-5 w-full my-5">
+	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
 		<TodoCard />
 	</div>
-	<div class="space-y-2 sm:w-1/3 w-full">
+	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
 		<TodoCard />
 	</div>
-	<div class="space-y-2 sm:w-1/3 w-full">
+	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
 		<TodoCard />
 	</div>
