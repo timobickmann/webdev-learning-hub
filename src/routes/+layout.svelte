@@ -2,7 +2,7 @@
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 
-	import Navigation from '$lib/Navigation.svelte';
+	import Navigation from './Navigation.svelte';
 
 	//icons
 	import GithubIcon from '~icons/fa/github';

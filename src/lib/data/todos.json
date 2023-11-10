@@ -1,0 +1,142 @@
+[
+	{
+		"name": "Finish Project X",
+		"date": "2023-11-09",
+		"categories": ["Work"],
+		"comment": "Make sure to double-check the client requirements before submitting.",
+		"status": "todo"
+	},
+	{
+		"name": "Grocery Shopping",
+		"date": "2023-11-10",
+		"categories": ["Personal"],
+		"comment": "Don't forget to buy milk and eggs.",
+		"status": "todo"
+	},
+	{
+		"name": "Exercise",
+		"date": "2023-11-11",
+		"categories": ["Health"],
+		"comment": "30 minutes of cardio today.",
+		"status": "doing"
+	},
+	{
+		"name": "Read Book",
+		"date": "2023-11-12",
+		"categories": ["Personal"],
+		"comment": "Chapter 5-10.",
+		"status": "todo"
+	},
+	{
+		"name": "Prepare Presentation",
+		"date": "2023-11-13",
+		"categories": ["Work", "Urgent"],
+		"comment": "Include recent data trends.",
+		"status": "doing"
+	},
+	{
+		"name": "Call Mom",
+		"date": "2023-11-14",
+		"categories": ["Personal"],
+		"comment": "Wish her a happy birthday!",
+		"status": "done"
+	},
+	{
+		"name": "Design Mockups",
+		"date": "2023-11-15",
+		"categories": ["Work"],
+		"comment": "For new website features.",
+		"status": "done"
+	},
+	{
+		"name": "Yoga Class",
+		"date": "2023-11-16",
+		"categories": ["Health"],
+		"comment": "Attend 6:00 PM class.",
+		"status": "doing"
+	},
+	{
+		"name": "Write Blog Post",
+		"date": "2023-11-17",
+		"categories": ["Work"],
+		"comment": "Topic: Future of AI.",
+		"status": "done"
+	},
+	{
+		"name": "Cook Dinner",
+		"date": "2023-11-18",
+		"categories": ["Personal"],
+		"comment": "Try out new recipe.",
+		"status": "done"
+	},
+	{
+		"name": "Code Review",
+		"date": "2023-11-19",
+		"categories": ["Work"],
+		"comment": "Review pull requests.",
+		"status": "doing"
+	},
+	{
+		"name": "Learn Guitar",
+		"date": "2023-11-20",
+		"categories": ["Personal"],
+		"comment": "Practice chords.",
+		"status": "todo"
+	},
+	{
+		"name": "Attend Meeting",
+		"date": "2023-11-21",
+		"categories": ["Work"],
+		"comment": "Discuss project updates.",
+		"status": "doing"
+	},
+	{
+		"name": "Visit Dentist",
+		"date": "2023-11-22",
+		"categories": ["Health"],
+		"comment": "Regular checkup.",
+		"status": "done"
+	},
+	{
+		"name": "Update Resume",
+		"date": "2023-11-23",
+		"categories": ["Work"],
+		"comment": "Add recent achievements.",
+		"status": "todo"
+	},
+	{
+		"name": "Movie Night",
+		"date": "2023-11-24",
+		"categories": ["Personal"],
+		"comment": "Watch favorite movie.",
+		"status": "todo"
+	},
+	{
+		"name": "Review Goals",
+		"date": "2023-11-25",
+		"categories": ["Personal"],
+		"comment": "Check progress and adjust.",
+		"status": "todo"
+	},
+	{
+		"name": "Networking Event",
+		"date": "2023-11-26",
+		"categories": ["Work"],
+		"comment": "Meet industry professionals.",
+		"status": "todo"
+	},
+	{
+		"name": "Travel Planning",
+		"date": "2023-11-27",
+		"categories": ["Personal"],
+		"comment": "Plan upcoming vacation.",
+		"status": "todo"
+	},
+	{
+		"name": "Submit Expense Report",
+		"date": "2023-11-28",
+		"categories": ["Work"],
+		"comment": "Include receipts.",
+		"status": "todo"
+	}
+]

@@ -1,17 +1,23 @@
-<script>
+<script lang="ts">
 	import TodoCard from './TodoCard.svelte';
 	import { slide } from 'svelte/transition';
+	import todos from '$lib/data/todos.json';
+	import type { ITodo } from '$lib/interfaces';
 
 	let filterIsOpen = false;
+
+	const todosDone = (todos as ITodo[]).filter((todo) => todo.status === 'done');
+	const todosDoing = (todos as ITodo[]).filter((todo) => todo.status === 'doing');
+	const todosTodo = (todos as ITodo[]).filter((todo) => todo.status === 'todo');
 </script>
 
 <h2 class="h2 mb-2">Todos Page</h2>
 
-<hr class="w-full my-2" />
+<hr class="w-full mt-2 mb-4" />
 
-<div>
-	<button class="btn btn-primary">Add Todo</button>
-	<button on:click={() => (filterIsOpen = !filterIsOpen)} class="btn">filter</button>
+<div class="flex gap-5 mb-2">
+	<button class="btn variant-filled-primary">Add Todo</button>
+	<button on:click={() => (filterIsOpen = !filterIsOpen)} class="btn variant-filled">filter</button>
 </div>
 
 {#if filterIsOpen}
@@ -27,14 +33,20 @@
 <div class="flex flex-col md:flex-row gap-5 w-full my-5">
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
-		<TodoCard />
+		{#each todosTodo as todo}
+			<TodoCard {todo} />
+		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
-		<TodoCard />
+		{#each todosDoing as todo}
+			<TodoCard {todo} />
+		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
-		<TodoCard />
+		{#each todosDone as todo}
+			<TodoCard {todo} />
+		{/each}
 	</div>
 </div>
