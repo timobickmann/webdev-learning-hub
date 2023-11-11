@@ -1,0 +1,21 @@
+<script lang="ts">
+	import { getModalStore } from '@skeletonlabs/skeleton';
+
+	const modalStore = getModalStore();
+</script>
+
+{#if $modalStore[0]}
+	<div class="card p-4 w-modal shadow-xl space-y-4">
+		<h3 class="h3">{$modalStore[0].meta.title}</h3>
+		<form class="flex flex-col gap-4" action={`?/${$modalStore[0].meta.action}`} method="POST">
+			<label class="label"
+				>Title
+				<input class="input" type="text" name="title" />
+			</label>
+			<span class="flex justify-end gap-2">
+				<button class="btn variant-filled-success" type="submit">Add Todo</button>
+				<button class="btn variant-filled" on:click={() => modalStore.close()}>Cancel</button></span
+			>
+		</form>
+	</div>
+{/if}

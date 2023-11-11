@@ -1,13 +1,17 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar, Modal, initializeStores } from '@skeletonlabs/skeleton';
 
 	import Navigation from './Navigation.svelte';
 
 	//icons
 	import GithubIcon from '~icons/fa/github';
 	import TwoDimensionalCodeTwoIcon from '~icons/icon-park-outline/two-dimensional-code-two';
+
+	initializeStores();
 </script>
+
+<Modal />
 
 <AppShell>
 	<svelte:fragment slot="header">
@@ -37,5 +41,7 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
-	<main class="container h-full mx-auto flex flex-col justify-start items-start pt-8"><slot /></main>
+	<main class="container h-full mx-auto flex flex-col justify-start items-start pt-8">
+		<slot />
+	</main>
 </AppShell>
