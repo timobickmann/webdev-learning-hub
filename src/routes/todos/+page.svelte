@@ -1,14 +1,16 @@
 <script lang="ts">
 	import TodoCard from './TodoCard.svelte';
 	import { slide } from 'svelte/transition';
-	import todos from '$lib/data/todos.json';
-	import type { ITodo } from '$lib/interfaces';
+	import type { Todo } from '@prisma/client';
+	import type { PageData } from './$types';
 
+	//props
+	export let data: PageData;
+
+	$: todos = data.todos;
+
+	//state
 	let filterIsOpen = false;
-
-	const todosDone = (todos as ITodo[]).filter((todo) => todo.status === 'done');
-	const todosDoing = (todos as ITodo[]).filter((todo) => todo.status === 'doing');
-	const todosTodo = (todos as ITodo[]).filter((todo) => todo.status === 'todo');
 </script>
 
 <h2 class="h2 mb-2">Todos Page</h2>
@@ -31,22 +33,29 @@
 {/if}
 
 <div class="flex flex-col md:flex-row gap-5 w-full my-5">
-	<div class="space-y-2 md:w-1/3 w-full">
+	<!-- <div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
-		{#each todosTodo as todo}
+		{#each todos as todo}
 			<TodoCard {todo} />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
-		{#each todosDoing as todo}
+		{#each todos as todo}
 			<TodoCard {todo} />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
-		{#each todosDone as todo}
+		{#each todos as todo}
 			<TodoCard {todo} />
+		{/each}
+	</div> -->
+	<div class="space-y-2 md:w-1/3 w-full">
+		<h3 class="h3">Todos</h3>
+		{#each todos as todo}
+			<p>{todo.title}</p>
+			<p>{todo.status}</p>
 		{/each}
 	</div>
 </div>
