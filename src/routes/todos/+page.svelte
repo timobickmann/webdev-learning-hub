@@ -1,14 +1,12 @@
 <script lang="ts">
 	import TodoCard from './TodoCard.svelte';
 	import { slide } from 'svelte/transition';
-	import todos from '$lib/data/todos.json';
-	import type { ITodo } from '$lib/interfaces';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+	export let { todosTodo, todosDoing, todosDone } = data;
 
 	let filterIsOpen = false;
-
-	const todosDone = (todos as ITodo[]).filter((todo) => todo.status === 'done');
-	const todosDoing = (todos as ITodo[]).filter((todo) => todo.status === 'doing');
-	const todosTodo = (todos as ITodo[]).filter((todo) => todo.status === 'todo');
 </script>
 
 <h2 class="h2 mb-2">Todos Page</h2>
@@ -34,19 +32,22 @@
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
 		{#each todosTodo as todo}
-			<TodoCard {todo} />
+			<p>Title: {todo.title} / Status: {todo.status}</p>
+			<!-- <TodoCard {todo} /> -->
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
 		{#each todosDoing as todo}
-			<TodoCard {todo} />
+			<p>Title: {todo.title} / Status: {todo.status}</p>
+			<!-- <TodoCard {todo} /> -->
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
 		{#each todosDone as todo}
-			<TodoCard {todo} />
+			<p>Title: {todo.title} / Status: {todo.status}</p>
+			<!-- <TodoCard {todo} /> -->
 		{/each}
 	</div>
 </div>
