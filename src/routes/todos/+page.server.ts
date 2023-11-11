@@ -1,9 +1,11 @@
 import type { PageServerLoad } from './$types';
 import type { Todo } from '@prisma/client';
+import { prisma } from '$lib/server/prisma';
 
-export const load: PageServerLoad = async ({ fetch }) => {
-	const response = await fetch('/api/todos');
-	const data = (await response.json()) as Todo[];
+export const load: PageServerLoad = async () => {
+	const todosTodo = (await prisma.todo.findMany({ where: { status: 'todo' } })) as Todo[];
+	const todosDoing = (await prisma.todo.findMany({ where: { status: 'doing' } })) as Todo[];
+	const todosDone = (await prisma.todo.findMany({ where: { status: 'done' } })) as Todo[];
 
-	return { todos: data };
+	return { todosTodo, todosDoing, todosDone };
 };

@@ -1,15 +1,11 @@
 <script lang="ts">
 	import TodoCard from './TodoCard.svelte';
 	import { slide } from 'svelte/transition';
-	import type { Todo } from '@prisma/client';
 	import type { PageData } from './$types';
 
-	//props
 	export let data: PageData;
+	export let { todosTodo, todosDoing, todosDone } = data;
 
-	$: todos = data.todos;
-
-	//state
 	let filterIsOpen = false;
 </script>
 
@@ -33,29 +29,25 @@
 {/if}
 
 <div class="flex flex-col md:flex-row gap-5 w-full my-5">
-	<!-- <div class="space-y-2 md:w-1/3 w-full">
+	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
-		{#each todos as todo}
-			<TodoCard {todo} />
+		{#each todosTodo as todo}
+			<p>Title: {todo.title} / Status: {todo.status}</p>
+			<!-- <TodoCard {todo} /> -->
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
-		{#each todos as todo}
-			<TodoCard {todo} />
+		{#each todosDoing as todo}
+			<p>Title: {todo.title} / Status: {todo.status}</p>
+			<!-- <TodoCard {todo} /> -->
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
-		{#each todos as todo}
-			<TodoCard {todo} />
-		{/each}
-	</div> -->
-	<div class="space-y-2 md:w-1/3 w-full">
-		<h3 class="h3">Todos</h3>
-		{#each todos as todo}
-			<p>{todo.title}</p>
-			<p>{todo.status}</p>
+		{#each todosDone as todo}
+			<p>Title: {todo.title} / Status: {todo.status}</p>
+			<!-- <TodoCard {todo} /> -->
 		{/each}
 	</div>
 </div>
