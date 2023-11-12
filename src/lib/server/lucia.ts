@@ -10,7 +10,11 @@ import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
 export const auth = lucia({
 	env: dev ? 'DEV' : 'PROD',
 	middleware: sveltekit(),
-	adapter: prisma(prismaClient),
+	adapter: prisma(prismaClient, {
+		user: "user",
+		key: "key",
+		session: "session"
+	}),
 
 	getUserAttributes: (data) => {
 		return {

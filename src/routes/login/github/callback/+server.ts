@@ -39,12 +39,14 @@ export const GET = async ({ cookies, url, locals }) => {
 		});
 	} catch (error) {
 		if (error instanceof OAuthRequestError) {
-			return new Response(null, {
+			return new Response(error.message, {
 				status: 400
 			});
 		}
-		return new Response("testerror", {
-			status: 500
-		});
+		if (error instanceof Error) {
+			return new Response(error.message, {
+				status: 500
+			});
+		}
 	}
 };
