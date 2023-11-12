@@ -2,6 +2,7 @@ import type { PageServerLoad, Actions } from './$types';
 import type { Todo, TodoStatus } from '@prisma/client';
 import { prismaClient } from '$lib/server/prisma';
 import { fail } from '@sveltejs/kit';
+import { checkUserRole } from '$lib/server/checkUserRole';
 
 export const load: PageServerLoad = async () => {
 	const todosTodo = (await prismaClient.todo.findMany({ where: { status: 'todo' } })) as Todo[];
@@ -12,7 +13,12 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions: Actions = {
-	addTodo: async ({ request }) => {
+	addTodo: async ({ request, locals }) => {
+		const userCheck = await checkUserRole(locals, 'admin');
+
+		if (userCheck) {
+			return userCheck;
+		}
 		const { title } = Object.fromEntries(await request.formData()) as { title: string };
 
 		try {
@@ -26,7 +32,13 @@ export const actions: Actions = {
 		};
 	},
 
-	deleteTodo: async ({ request }) => {
+	deleteTodo: async ({ request, locals }) => {
+		const userCheck = await checkUserRole(locals, 'admin');
+
+		if (userCheck) {
+			return userCheck;
+		}
+
 		const { id } = Object.fromEntries(await request.formData()) as { id: string };
 
 		try {
@@ -41,7 +53,12 @@ export const actions: Actions = {
 		};
 	},
 
-	editTodo: async ({ request }) => {
+	editTodo: async ({ request, locals }) => {
+		const userCheck = await checkUserRole(locals, 'admin');
+
+		if (userCheck) {
+			return userCheck;
+		}
 		const { id, title, status } = Object.fromEntries(await request.formData()) as {
 			id: string;
 			title: string;
