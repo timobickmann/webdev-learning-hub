@@ -2,20 +2,19 @@
 // for information about these interfaces
 // and what to do when importing types
 declare global {
-	
 	namespace App {
-	interface Locals {
-		auth: import('lucia').AuthRequest;
+		interface Locals {
+			auth: import('lucia').AuthRequest;
+		}
+		// interface PageData {}
+		// interface Error {}
+		// interface Platform {}
 	}
-	// interface PageData {}
-	// interface Error {}
-	// interface Platform {}
-}
 
-/// <reference types="lucia" />
+	/// <reference types="lucia" />
 	namespace Lucia {
 		type Auth = import('$lib/server/lucia').Auth;
-		type DatabaseUserAttributes = object;
+		type DatabaseUserAttributes = { username: string };
 		type DatabaseSessionAttributes = object;
 	}
 }

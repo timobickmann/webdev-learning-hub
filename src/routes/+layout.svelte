@@ -16,9 +16,6 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar
-			gridColumns="grid-cols-3"
-			slotDefault="place-self-center"
-			slotTrail="place-content-end"
 			class="drop-shadow-2xl"
 		>
 			<svelte:fragment slot="lead">
@@ -28,7 +25,6 @@
 					/></a
 				>
 			</svelte:fragment>
-			<h2 class="h2">Timos Learning Hub</h2>
 			<svelte:fragment slot="trail">
 				<Navigation />
 				<a
@@ -41,7 +37,7 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
-	<main class="container h-full mx-auto flex flex-col justify-start items-start pt-8">
+	<main class="max-w-[98%] sm:container h-full mx-auto flex flex-col justify-start items-start pt-8">
 		<slot />
 	</main>
 </AppShell>
