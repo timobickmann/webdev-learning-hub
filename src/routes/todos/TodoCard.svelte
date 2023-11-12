@@ -24,15 +24,11 @@
 			todo: todo
 		}
 	};
-
 </script>
 
-<div class="card py-2 pr-2 w-full space-y-2">
-	<div class="flex">
-		<span class="w-8 flex justify-center items-center"><input type="checkbox" /></span>
-		<p class="font-bold">{todo.title}</p>
-	</div>
-	<div class="flex px-8 text-sm gap-2">
+<div class="card p-2 w-full space-y-2">
+	<p class="font-bold">{todo.title}</p>
+	<div class="flex text-sm gap-2">
 		<div class="flex gap-1 items-center">
 			<CalendarIcon class="h-4 w-4" />
 			<!-- {todo.date} -->

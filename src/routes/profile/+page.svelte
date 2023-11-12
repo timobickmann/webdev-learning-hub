@@ -10,5 +10,5 @@
 <p>User id: {data.userId}</p>
 <p>GitHub username: {data.githubUsername}</p>
 <form method="POST" action="?/logout" use:enhance>
-	<input type="submit" value="Sign out" />
+	<input class="mt-5 btn cursor-pointer variant-filled" type="submit" value="Sign out" />
 </form>

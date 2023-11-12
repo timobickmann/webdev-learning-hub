@@ -15,7 +15,15 @@
 				>Title
 				<input value={todo.title} class="input" type="text" name="title" />
 			</label>
-			<input type="hidden" name="id" value={todo.id}>
+			<label class="label"
+				>Status
+				<select class="input" name="status">
+					<option value="todo" selected={todo.status === 'todo'}>todo</option>
+					<option value="doing" selected={todo.status === 'doing'}>doing</option>
+					<option value="done" selected={todo.status === 'done'}>done</option>
+				</select>
+			</label>
+			<input type="hidden" name="id" value={todo.id} />
 			<span class="flex justify-end gap-2">
 				<button class="btn variant-filled-success" type="submit">Edit Todo</button>
 				<button class="btn variant-filled" on:click={() => modalStore.close()}>Cancel</button>
