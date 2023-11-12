@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { getModalStore } from '@skeletonlabs/skeleton';
 
 	const modalStore = getModalStore();
@@ -7,7 +8,7 @@
 {#if $modalStore[0]}
 	<div class="card p-4 w-modal shadow-xl space-y-4">
 		<h3 class="h3">Add a new Todo</h3>
-		<form class="flex flex-col gap-4" action="?/addTodo" method="POST">
+		<form class="flex flex-col gap-4" action="?/addTodo" method="POST" use:enhance>
 			<label class="label"
 				>Title
 				<input class="input" type="text" name="title" />

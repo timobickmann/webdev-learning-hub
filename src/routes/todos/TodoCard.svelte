@@ -2,6 +2,7 @@
 	import CalendarIcon from '~icons/fa/calendar';
 	import CommentIcon from '~icons/fa/comment';
 	import type { Todo } from '@prisma/client';
+	import { enhance } from '$app/forms';
 
 	import { getModalStore, type ModalComponent, type ModalSettings } from '@skeletonlabs/skeleton';
 	import EditTodoModal from './EditTodoModal.svelte';
@@ -19,10 +20,7 @@
 
 	const editTodoModal: ModalSettings = {
 		type: 'component',
-		component: EditTodoModalComponent,
-		meta: {
-			todo: todo
-		}
+		component: EditTodoModalComponent
 	};
 </script>
 
@@ -46,7 +44,7 @@
 		<button class="btn btn-sm variant-filled" on:click={() => modalStore.trigger(editTodoModal)}
 			>Edit</button
 		>
-		<form action="?/deleteTodo" method="POST">
+		<form action="?/deleteTodo" method="POST" use:enhance>
 			<input type="hidden" name="id" value={todo.id} />
 			<button type="submit" class="btn btn-sm variant-filled-error">Delete</button>
 		</form>

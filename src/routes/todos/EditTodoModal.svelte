@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { Todo } from '@prisma/client';
 	import { getModalStore } from '@skeletonlabs/skeleton';
 
@@ -10,7 +11,7 @@
 {#if $modalStore[0]}
 	<div class="card p-4 w-modal shadow-xl space-y-4">
 		<h3 class="h3">Edit Todo {todo.title}</h3>
-		<form class="flex flex-col gap-4" action="?/editTodo" method="POST">
+		<form class="flex flex-col gap-4" action="?/editTodo" method="POST" use:enhance>
 			<label class="label"
 				>Title
 				<input value={todo.title} class="input" type="text" name="title" />
