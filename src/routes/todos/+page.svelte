@@ -3,7 +3,7 @@
 	import { slide } from 'svelte/transition';
 	import type { PageData } from './$types';
 	import { getModalStore, type ModalComponent, type ModalSettings } from '@skeletonlabs/skeleton';
-	import TodoFormModal from './TodoFormModal.svelte';
+	import AddTodoModal from './AddTodoModal.svelte';
 
 	export let data: PageData;
 	export let { todosTodo, todosDoing, todosDone } = data;
@@ -12,17 +12,13 @@
 
 	const modalStore = getModalStore();
 
-	const TodoFormModalComponent: ModalComponent = {
-		ref: TodoFormModal
+	const AddTodoModalComponent: ModalComponent = {
+		ref: AddTodoModal
 	};
 
 	const addTodoModal: ModalSettings = {
 		type: 'component',
-		component: TodoFormModalComponent,
-		meta: {
-			title: 'Add a new Todo',
-			action: 'addTodo'
-		}
+		component: AddTodoModalComponent
 	};
 </script>
 
@@ -51,22 +47,19 @@
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
 		{#each todosTodo as todo}
-			<p>Title: {todo.title} / Status: {todo.status}</p>
-			<!-- <TodoCard {todo} /> -->
+			<TodoCard {todo} />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
 		{#each todosDoing as todo}
-			<p>Title: {todo.title} / Status: {todo.status}</p>
-			<!-- <TodoCard {todo} /> -->
+			<TodoCard {todo} />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
 		{#each todosDone as todo}
-			<p>Title: {todo.title} / Status: {todo.status}</p>
-			<!-- <TodoCard {todo} /> -->
+			<TodoCard {todo} />
 		{/each}
 	</div>
 </div>

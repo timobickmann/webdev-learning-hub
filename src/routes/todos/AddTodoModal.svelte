@@ -6,8 +6,8 @@
 
 {#if $modalStore[0]}
 	<div class="card p-4 w-modal shadow-xl space-y-4">
-		<h3 class="h3">{$modalStore[0].meta.title}</h3>
-		<form class="flex flex-col gap-4" action={`?/${$modalStore[0].meta.action}`} method="POST">
+		<h3 class="h3">Add a new Todo</h3>
+		<form class="flex flex-col gap-4" action="?/addTodo" method="POST">
 			<label class="label"
 				>Title
 				<input class="input" type="text" name="title" />
