@@ -1,9 +1,7 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import prismaClient from '$lib/server/prisma';
 
 async function main() {
-	await prisma.todo.createMany({
+	await prismaClient.todo.createMany({
 		data: [
 			{
 				title: 'Todo',
@@ -23,7 +21,7 @@ async function main() {
 
 main()
 	.then(async () => {
-		await prisma.$disconnect();
+		await prismaClient.$disconnect();
 	})
 	.catch(async (e) => {
 		console.error(e);

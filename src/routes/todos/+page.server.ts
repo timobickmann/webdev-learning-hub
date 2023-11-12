@@ -1,12 +1,12 @@
 import type { PageServerLoad, Actions } from './$types';
 import type { Todo, TodoStatus } from '@prisma/client';
-import { prisma } from '$lib/server/prisma';
+import { prismaClient } from '$lib/server/prisma';
 import { fail } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async () => {
-	const todosTodo = (await prisma.todo.findMany({ where: { status: 'todo' } })) as Todo[];
-	const todosDoing = (await prisma.todo.findMany({ where: { status: 'doing' } })) as Todo[];
-	const todosDone = (await prisma.todo.findMany({ where: { status: 'done' } })) as Todo[];
+	const todosTodo = (await prismaClient.todo.findMany({ where: { status: 'todo' } })) as Todo[];
+	const todosDoing = (await prismaClient.todo.findMany({ where: { status: 'doing' } })) as Todo[];
+	const todosDone = (await prismaClient.todo.findMany({ where: { status: 'done' } })) as Todo[];
 
 	return { todosTodo, todosDoing, todosDone };
 };
@@ -16,7 +16,7 @@ export const actions: Actions = {
 		const { title } = Object.fromEntries(await request.formData()) as { title: string };
 
 		try {
-			await prisma.todo.create({ data: { title, status: 'todo' } });
+			await prismaClient.todo.create({ data: { title, status: 'todo' } });
 		} catch (error) {
 			console.error(error);
 			return fail(500, { message: 'Could not create the todo' });
@@ -30,7 +30,7 @@ export const actions: Actions = {
 		const { id } = Object.fromEntries(await request.formData()) as { id: string };
 
 		try {
-			await prisma.todo.delete({ where: { id: id } });
+			await prismaClient.todo.delete({ where: { id: id } });
 		} catch (error) {
 			console.error(error);
 			return fail(500, { message: 'Could not delete the todo' });
@@ -49,7 +49,7 @@ export const actions: Actions = {
 		};
 
 		try {
-			await prisma.todo.update({ where: { id: id }, data: { title, status } });
+			await prismaClient.todo.update({ where: { id: id }, data: { title, status } });
 		} catch (error) {
 			console.error(error);
 			return fail(500, { message: 'Could not update the todo' });
