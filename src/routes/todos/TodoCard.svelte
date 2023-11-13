@@ -6,7 +6,6 @@
 
 	import { getModalStore, type ModalComponent, type ModalSettings } from '@skeletonlabs/skeleton';
 	import EditTodoModal from './EditTodoModal.svelte';
-	import type { PageData } from './$types';
 
 	export let todo: Todo;
 	export let userRole: string;
