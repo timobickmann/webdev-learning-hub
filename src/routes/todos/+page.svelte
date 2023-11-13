@@ -6,7 +6,7 @@
 	import AddTodoModal from './AddTodoModal.svelte';
 
 	export let data: PageData;
-	export let { todosTodo, todosDoing, todosDone } = data;
+	export let { todosTodo, todosDoing, todosDone, userRole } = data;
 
 	$: {
 		({ todosTodo, todosDoing, todosDone } = data);
@@ -25,6 +25,12 @@
 		type: 'component',
 		component: AddTodoModalComponent
 	};
+
+	function handleAddTodo ()  {
+		if (userRole == 'admin') modalStore.trigger(addTodoModal);
+		else modalStore.trigger({ type: 'alert', title: 'You are not allowed to add todos' });
+	}
+
 </script>
 
 <h2 class="h2 mb-2">Todos Page</h2>
@@ -32,7 +38,7 @@
 <hr class="w-full mt-2 mb-4" />
 
 <div class="flex gap-5 mb-2">
-	<button on:click={() => modalStore.trigger(addTodoModal)} class="btn variant-filled-primary"
+	<button on:click={handleAddTodo} class="btn variant-filled-primary"
 		>Add Todo</button
 	>
 	<button on:click={() => (filterIsOpen = !filterIsOpen)} class="btn variant-filled">filter</button>
@@ -52,19 +58,19 @@
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
 		{#each todosTodo as todo}
-			<TodoCard {todo} />
+			<TodoCard {todo} {userRole} />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
 		{#each todosDoing as todo}
-			<TodoCard {todo} />
+			<TodoCard {todo} {userRole} />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
 		{#each todosDone as todo}
-			<TodoCard {todo} />
+			<TodoCard {todo} {userRole}/>
 		{/each}
 	</div>
 </div>
