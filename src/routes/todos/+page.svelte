@@ -8,7 +8,7 @@
 	export let data: PageData;
 	export let { todosTodo, todosDoing, todosDone } = data;
 
-	$: if (data) {
+	$: {
 		({ todosTodo, todosDoing, todosDone } = data);
 		modalStore.close();
 	}

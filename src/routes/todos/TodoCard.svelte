@@ -10,6 +10,7 @@
 	export let todo: Todo;
 
 	const modalStore = getModalStore();
+	$: EditTodoModalComponent.props = { todo: todo };
 
 	const EditTodoModalComponent: ModalComponent = {
 		ref: EditTodoModal,
