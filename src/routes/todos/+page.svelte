@@ -26,11 +26,10 @@
 		component: AddTodoModalComponent
 	};
 
-	function handleAddTodo ()  {
-		if (userRole == 'admin') modalStore.trigger(addTodoModal);
+	function handleAddTodo() {
+		if (userRole === 'admin') modalStore.trigger(addTodoModal);
 		else modalStore.trigger({ type: 'alert', title: 'You are not allowed to add todos' });
 	}
-
 </script>
 
 <h2 class="h2 mb-2">Todos Page</h2>
@@ -38,9 +37,7 @@
 <hr class="w-full mt-2 mb-4" />
 
 <div class="flex gap-5 mb-2">
-	<button on:click={handleAddTodo} class="btn variant-filled-primary"
-		>Add Todo</button
-	>
+	<button on:click={handleAddTodo} class="btn variant-filled-primary">Add Todo</button>
 	<button on:click={() => (filterIsOpen = !filterIsOpen)} class="btn variant-filled">filter</button>
 </div>
 
@@ -70,7 +67,7 @@
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
 		{#each todosDone as todo}
-			<TodoCard {todo} {userRole}/>
+			<TodoCard {todo} {userRole} />
 		{/each}
 	</div>
 </div>

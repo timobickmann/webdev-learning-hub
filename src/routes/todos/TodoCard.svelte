@@ -9,7 +9,7 @@
 	import type { PageData } from './$types';
 
 	export let todo: Todo;
-	export let userRole: string
+	export let userRole: string;
 
 	const modalStore = getModalStore();
 	$: EditTodoModalComponent.props = { todo: todo };
@@ -27,7 +27,7 @@
 	};
 
 	function handleEditTodo() {
-		if (userRole == 'admin') modalStore.trigger(editTodoModal);
+		if (userRole === 'admin') modalStore.trigger(editTodoModal);
 		else modalStore.trigger({ type: 'alert', title: 'You are not allowed to edit todos' });
 	}
 
