@@ -1,13 +1,16 @@
 import { auth } from '$lib/server/lucia';
 import { redirect, fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
+import type { User } from '@prisma/client';
+import { prismaClient } from '$lib/server/prisma';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
-	return {
-		githubUsername: session.user.githubUsername
-	};
+	const user = (await prismaClient.user.findUnique({
+		where: { id: session.user.userId }
+	})) as User;
+	return { ...user, role: String(user.role) };
 };
 
 export const actions: Actions = {
