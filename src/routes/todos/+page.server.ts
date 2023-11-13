@@ -2,15 +2,13 @@ import type { PageServerLoad, Actions } from './$types';
 import type { Todo, TodoStatus } from '@prisma/client';
 import { prismaClient } from '$lib/server/prisma';
 import { fail } from '@sveltejs/kit';
-import { getUserRole } from '$lib/server/getUserRole';
 
-export const load: PageServerLoad = async ({ locals }) => {
+export const load: PageServerLoad = async () => {
 	const todosTodo = (await prismaClient.todo.findMany({ where: { status: 'todo' } })) as Todo[];
 	const todosDoing = (await prismaClient.todo.findMany({ where: { status: 'doing' } })) as Todo[];
 	const todosDone = (await prismaClient.todo.findMany({ where: { status: 'done' } })) as Todo[];
-	const userRole = await getUserRole(locals);
 
-	return { todosTodo, todosDoing, todosDone, userRole };
+	return { todosTodo, todosDoing, todosDone };
 };
 
 export const actions: Actions = {

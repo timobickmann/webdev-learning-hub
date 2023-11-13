@@ -4,9 +4,10 @@
 	import type { PageData } from './$types';
 	import { getModalStore, type ModalComponent, type ModalSettings } from '@skeletonlabs/skeleton';
 	import AddTodoModal from './AddTodoModal.svelte';
+	import { userStore } from '$lib/stores';
 
 	export let data: PageData;
-	export let { todosTodo, todosDoing, todosDone, userRole } = data;
+	export let { todosTodo, todosDoing, todosDone } = data;
 
 	$: {
 		({ todosTodo, todosDoing, todosDone } = data);
@@ -27,7 +28,7 @@
 	};
 
 	function handleAddTodo() {
-		if (userRole === 'admin') modalStore.trigger(addTodoModal);
+		if ($userStore.userRole === 'admin') modalStore.trigger(addTodoModal);
 		else modalStore.trigger({ type: 'alert', title: 'You are not allowed to add todos' });
 	}
 </script>
@@ -55,19 +56,19 @@
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Todo</h3>
 		{#each todosTodo as todo}
-			<TodoCard {todo} {userRole} />
+			<TodoCard {todo} />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Doing</h3>
 		{#each todosDoing as todo}
-			<TodoCard {todo} {userRole} />
+			<TodoCard {todo}  />
 		{/each}
 	</div>
 	<div class="space-y-2 md:w-1/3 w-full">
 		<h3 class="h3">Done</h3>
 		{#each todosDone as todo}
-			<TodoCard {todo} {userRole} />
+			<TodoCard {todo} />
 		{/each}
 	</div>
 </div>

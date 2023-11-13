@@ -1,12 +1,18 @@
 <script lang="ts">
 	import '../app.postcss';
 	import { AppShell, AppBar, Modal, initializeStores } from '@skeletonlabs/skeleton';
+	import { userStore } from '$lib/stores';
 
 	import Navigation from './Navigation.svelte';
 
 	//icons
 	import GithubIcon from '~icons/fa/github';
 	import TwoDimensionalCodeTwoIcon from '~icons/icon-park-outline/two-dimensional-code-two';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+	userStore.setUser(data.user);
 
 	initializeStores();
 </script>
@@ -15,9 +21,7 @@
 
 <AppShell>
 	<svelte:fragment slot="header">
-		<AppBar
-			class="drop-shadow-2xl"
-		>
+		<AppBar class="drop-shadow-2xl">
 			<svelte:fragment slot="lead">
 				<a aria-label="Home" href="/"
 					><TwoDimensionalCodeTwoIcon
@@ -38,7 +42,9 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
-	<main class="w-[98%] sm:w-4/5 h-full mx-auto flex flex-col justify-start items-center sm:items-start pt-8">
+	<main
+		class="w-[98%] sm:w-4/5 h-full mx-auto flex flex-col justify-start items-center sm:items-start pt-8"
+	>
 		<slot />
 	</main>
 </AppShell>

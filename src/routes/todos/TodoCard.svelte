@@ -6,9 +6,9 @@
 
 	import { getModalStore, type ModalComponent, type ModalSettings } from '@skeletonlabs/skeleton';
 	import EditTodoModal from './EditTodoModal.svelte';
+	import { userStore } from '$lib/stores';
 
 	export let todo: Todo;
-	export let userRole: string;
 
 	const modalStore = getModalStore();
 	$: EditTodoModalComponent.props = { todo: todo };
@@ -26,7 +26,7 @@
 	};
 
 	function handleEditTodo() {
-		if (userRole === 'admin') modalStore.trigger(editTodoModal);
+		if ($userStore.userRole === 'admin') modalStore.trigger(editTodoModal);
 		else modalStore.trigger({ type: 'alert', title: 'You are not allowed to edit todos' });
 	}
 
@@ -55,7 +55,7 @@
 		<button class="btn btn-sm variant-filled" on:click={handleEditTodo}>Edit</button>
 		<form action="?/deleteTodo" method="POST" use:enhance>
 			<input type="hidden" name="id" value={todo.id} />
-			{#if userRole == 'admin'}
+			{#if $userStore.userRole == 'admin'}
 				<button type="submit" class="btn btn-sm variant-filled-error">Delete</button>
 			{:else}
 				<button type="button" class="btn btn-sm variant-filled-error" on:click={handleDeleteTodo}
