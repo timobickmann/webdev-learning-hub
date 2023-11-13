@@ -37,7 +37,7 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
-	<main class="max-w-[98%] sm:container h-full mx-auto flex flex-col justify-start items-start pt-8">
+	<main class="w-[98%] sm:w-4/5 h-full mx-auto flex flex-col justify-start items-center sm:items-start pt-8">
 		<slot />
 	</main>
 </AppShell>
