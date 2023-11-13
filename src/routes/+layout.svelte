@@ -19,7 +19,7 @@
 			class="drop-shadow-2xl"
 		>
 			<svelte:fragment slot="lead">
-				<a href="/"
+				<a aria-label="Home" href="/"
 					><TwoDimensionalCodeTwoIcon
 						class="hover:rotate-180 duration-500 ease-in-out h-8 w-8"
 					/></a
@@ -28,6 +28,7 @@
 			<svelte:fragment slot="trail">
 				<Navigation />
 				<a
+					aria-label="Github Repository"
 					class="btn-icon hover:variant-soft-primary"
 					href="https://github.com/timobickmann/webdev-learning-hub"
 					target="_blank"
