@@ -17,7 +17,7 @@ export const actions: Actions = {
 		const userCheck = await checkUserRole(locals, 'admin');
 
 		if (userCheck) {
-			return userCheck;
+			return fail(userCheck.status, userCheck.body);
 		}
 		const { title } = Object.fromEntries(await request.formData()) as { title: string };
 
@@ -36,7 +36,7 @@ export const actions: Actions = {
 		const userCheck = await checkUserRole(locals, 'admin');
 
 		if (userCheck) {
-			return userCheck;
+			return fail(userCheck.status, userCheck.body);
 		}
 
 		const { id } = Object.fromEntries(await request.formData()) as { id: string };
@@ -57,7 +57,7 @@ export const actions: Actions = {
 		const userCheck = await checkUserRole(locals, 'admin');
 
 		if (userCheck) {
-			return userCheck;
+			return fail(userCheck.status, userCheck.body);
 		}
 		const { id, title, status } = Object.fromEntries(await request.formData()) as {
 			id: string;
