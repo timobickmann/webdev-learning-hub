@@ -8,11 +8,17 @@
 	//icons
 	import GithubIcon from '~icons/fa/github';
 	import TwoDimensionalCodeTwoIcon from '~icons/icon-park-outline/two-dimensional-code-two';
-	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
 
-	export let data: PageData;
-
-	userStore.setUser(data.user);
+	onMount(async () => {
+		const response = await fetch('/api/user');
+		if (!response.ok) {
+			userStore.setUser({ username: 'Guest', userRole: 'guest' });
+			return;
+		}
+		const data = await response.json();
+		userStore.setUser({ username: data.user.name, userRole: data.user.role });
+	});
 
 	initializeStores();
 </script>

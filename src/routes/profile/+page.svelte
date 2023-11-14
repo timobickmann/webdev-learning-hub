@@ -5,7 +5,7 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	const user = data.user
+	const user = data.user;
 
 	userStore.setUser({ username: user.name, userRole: user.role });
 </script>
