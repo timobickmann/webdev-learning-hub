@@ -7,10 +7,11 @@ import { prismaClient } from '$lib/server/prisma';
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
-	const user = (await prismaClient.user.findUnique({
+	const _user = (await prismaClient.user.findUnique({
 		where: { id: session.user.userId }
 	})) as User;
-	return { ...user, role: String(user.role) };
+	const user = { ..._user, role: String(_user.role) };
+	return {user};
 };
 
 export const actions: Actions = {
