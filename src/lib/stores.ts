@@ -1,12 +1,13 @@
 import { writable } from 'svelte/store';
 
 const createUserStore = () => {
-	const { subscribe, set } = writable({ username: '', userRole: 'guest' });
+	const { subscribe, set, update } = writable({ name: '', userRole: 'guest' });
 
 	return {
 		subscribe,
-		setUser: (user: { username: string; userRole: string }) => set(user),
-		clearUser: () => set({ username: '', userRole: 'guest' })
+		setUser: (user: { name: string; userRole: string }) => set(user),
+		setUsername: (name: string) => update((user) => ({ ...user, name: name })),
+		clearUser: () => set({ name: '', userRole: 'guest' })
 	};
 };
 

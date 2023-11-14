@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 		where: { id: session.user.userId }
 	})) as User;
 	const user = { ..._user, role: String(_user.role) };
-	return {user};
+	return { user };
 };
 
 export const actions: Actions = {
@@ -21,5 +21,21 @@ export const actions: Actions = {
 		await auth.invalidateSession(session.sessionId);
 		locals.auth.setSession(null);
 		throw redirect(302, '/login');
+	},
+
+	updateUser: async ({ request }) => {
+		const { nameInput, id } = Object.fromEntries(await request.formData()) as {
+			nameInput: string;
+			id: string;
+		};
+		try {
+			await prismaClient.user.update({ where: { id: id }, data: { name: nameInput } });
+		} catch (error) {
+			console.error(error);
+			return fail(500, { message: 'Could not update the user' });
+		}
+		return {
+			status: 201
+		};
 	}
 };

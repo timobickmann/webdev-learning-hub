@@ -1,16 +1,14 @@
 <script>
 	import { userStore } from '$lib/stores';
-	const navItems = [
-		{ name: 'Home', href: '/' },
-		{ name: 'Todos', href: '/todos' },
-		{ name: 'Profile', href: '/profile' },
-		{ name: 'Login', href: '/login' }
-	];
 </script>
 
 <nav>
-	<span>User: {$userStore.username}</span>
-	{#each navItems as { name, href }}
-		<a class="btn hover:variant-soft-primary" {href}>{name}</a>
-	{/each}
+	<span>User: {$userStore.name}</span>
+	<a class="btn hover:variant-soft-primary" href="/">Home</a>
+	<a class="btn hover:variant-soft-primary" href="/todos">Todos</a>
+	{#if $userStore.userRole === 'guest'}
+		<a class="btn hover:variant-soft-primary" href="/login">Login</a>
+	{:else}
+		<a class="btn hover:variant-soft-primary" href="/profile">Profile</a>
+	{/if}
 </nav>

@@ -53,7 +53,7 @@
 	</div>
 	<div class="flex justify-end gap-2">
 		<button class="btn btn-sm variant-filled" on:click={handleEditTodo}>Edit</button>
-		<form action="?/deleteTodo" method="POST" use:enhance>
+		<form on:submit|preventDefault action="?/deleteTodo" method="POST" use:enhance>
 			<input type="hidden" name="id" value={todo.id} />
 			{#if $userStore.userRole == 'admin'}
 				<button type="submit" class="btn btn-sm variant-filled-error">Delete</button>

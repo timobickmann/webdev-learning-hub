@@ -13,11 +13,11 @@
 	onMount(async () => {
 		const response = await fetch('/api/user');
 		if (!response.ok) {
-			userStore.setUser({ username: 'Guest', userRole: 'guest' });
+			userStore.setUser({ name: 'Guest', userRole: 'guest' });
 			return;
 		}
 		const data = await response.json();
-		userStore.setUser({ username: data.user.name, userRole: data.user.role });
+		userStore.setUser({ name: data.user.name, userRole: data.user.role });
 	});
 
 	initializeStores();
