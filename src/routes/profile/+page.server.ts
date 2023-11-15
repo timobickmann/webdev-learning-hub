@@ -11,7 +11,9 @@ export const load: PageServerLoad = async ({ locals }) => {
 		where: { id: session.user.userId }
 	})) as User;
 	const user = { ..._user, role: String(_user.role) };
-	return { user };
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const { id, ...userWithoutId } = user;
+	return { userWithoutId };
 };
 
 export const actions: Actions = {
@@ -23,13 +25,17 @@ export const actions: Actions = {
 		throw redirect(302, '/login');
 	},
 
-	updateUser: async ({ request }) => {
-		const { nameInput, id } = Object.fromEntries(await request.formData()) as {
+	updateUser: async ({ request, locals }) => {
+		const session = await locals.auth.validate();
+		if (!session) return fail(401, { message: 'Unauthorized' });
+		const { nameInput } = Object.fromEntries(await request.formData()) as {
 			nameInput: string;
-			id: string;
 		};
 		try {
-			await prismaClient.user.update({ where: { id: id }, data: { name: nameInput } });
+			await prismaClient.user.update({
+				where: { id: session?.user.userId },
+				data: { name: nameInput }
+			});
 		} catch (error) {
 			console.error(error);
 			return fail(500, { message: 'Could not update the user' });

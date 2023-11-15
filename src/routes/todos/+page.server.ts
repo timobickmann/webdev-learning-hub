@@ -12,7 +12,10 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions: Actions = {
-	addTodo: async ({ request }) => {
+	addTodo: async ({ request, locals }) => {
+		const session = await locals.auth.validate();
+		if (!session) return fail(401, { message: 'Unauthorized' });
+
 		const { title } = Object.fromEntries(await request.formData()) as { title: string };
 
 		try {
@@ -26,7 +29,10 @@ export const actions: Actions = {
 		};
 	},
 
-	deleteTodo: async ({ request }) => {
+	deleteTodo: async ({ request, locals }) => {
+		const session = await locals.auth.validate();
+		if (!session) return fail(401, { message: 'Unauthorized' });
+
 		const { id } = Object.fromEntries(await request.formData()) as { id: string };
 
 		try {
@@ -41,7 +47,10 @@ export const actions: Actions = {
 		};
 	},
 
-	editTodo: async ({ request }) => {
+	editTodo: async ({ request, locals }) => {
+		const session = await locals.auth.validate();
+		if (!session) return fail(401, { message: 'Unauthorized' });
+
 		const { id, title, status } = Object.fromEntries(await request.formData()) as {
 			id: string;
 			title: string;

@@ -5,7 +5,7 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	const user = data.user;
+	const user = data.userWithoutId;
 
 	userStore.setUser({ name: user.name, userRole: user.role });
 
@@ -22,7 +22,6 @@
 	<label>
 		<input class="input" type="text" name="nameInput" bind:value={nameInput} />Name</label
 	>
-	<input type="hidden" name="id" value={user.id}>
 </form>
 <form method="POST" action="?/logout" use:enhance>
 	<input class="mt-5 btn cursor-pointer variant-filled" type="submit" value="Sign out" />
