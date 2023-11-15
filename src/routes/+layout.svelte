@@ -2,13 +2,15 @@
 	import '../app.postcss';
 	import { AppShell, AppBar, Modal, initializeStores } from '@skeletonlabs/skeleton';
 	import { userStore } from '$lib/stores';
+	import { onMount } from 'svelte';
 
+	import { Avatar } from '@skeletonlabs/skeleton';
 	import Navigation from './Navigation.svelte';
 
 	//icons
 	import GithubIcon from '~icons/fa/github';
+	import UserIcon from '~icons/fa/user-circle';
 	import TwoDimensionalCodeTwoIcon from '~icons/icon-park-outline/two-dimensional-code-two';
-	import { onMount } from 'svelte';
 
 	onMount(async () => {
 		const response = await fetch('/api/user');
@@ -37,14 +39,19 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<Navigation />
-				<a
-					aria-label="Github Repository"
-					class="btn-icon hover:variant-soft-primary"
-					href="https://github.com/timobickmann/webdev-learning-hub"
-					target="_blank"
-					rel="noopener noreferrer"
-					><GithubIcon />
-				</a>
+				<span class="flex">
+					<a aria-label="User Profile" class="btn-icon hover:variant-soft-primary" href="/profile"
+						><Avatar class="w-8 h-8"/></a
+					>
+					<a
+						aria-label="Github Repository"
+						class="btn-icon hover:variant-soft-primary"
+						href="https://github.com/timobickmann/webdev-learning-hub"
+						target="_blank"
+						rel="noopener noreferrer"
+						><GithubIcon class="h-8 w-8"/>
+					</a></span
+				>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

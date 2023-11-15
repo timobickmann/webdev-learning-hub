@@ -16,7 +16,7 @@
 	};
 </script>
 
-<h1>Profile</h1>
+<h2 class="h2">Profile</h2>
 <p>GitHub username: {user.username}</p>
 <form on:submit|preventDefault={handleUserChange} action="?/updateUser" method="POST" use:enhance>
 	<label>

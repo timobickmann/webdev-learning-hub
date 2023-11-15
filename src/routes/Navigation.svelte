@@ -3,12 +3,27 @@
 </script>
 
 <nav>
-	<span>User: {$userStore.name}</span>
-	<a class="btn hover:variant-soft-primary" href="/">Home</a>
-	<a class="btn hover:variant-soft-primary" href="/todos">Todos</a>
+	<a href="/">Home</a>
+	<a href="/todos">Todos</a>
+	<a href="/code">Code</a>
+	<a href="/notes">Notes</a>
+	<a href="/howtos">How Tos</a>
+	<a href="/projectboard">Projectboard</a>
+	<select class="select max-w-fit cursor-pointer"
+		><option value="Project 1">Project 1</option>
+		<option value="Project 2">Project 2</option>
+	</select>
 	{#if $userStore.userRole === 'guest'}
-		<a class="btn hover:variant-soft-primary" href="/login">Login</a>
-	{:else}
-		<a class="btn hover:variant-soft-primary" href="/profile">Profile</a>
+		<a href="/login">Login</a>
 	{/if}
 </nav>
+
+<style>
+	a {
+		@apply btn;
+	}
+
+	a:hover {
+		@apply variant-soft-primary;
+	}
+</style>
