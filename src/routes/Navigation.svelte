@@ -13,7 +13,7 @@
 		><option value="Project 1">Project 1</option>
 		<option value="Project 2">Project 2</option>
 	</select>
-	{#if $userStore.userRole === 'guest'}
+	{#if $userStore.role === 'guest'}
 		<a href="/login">Login</a>
 	{/if}
 </nav>

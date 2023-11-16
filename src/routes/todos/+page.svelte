@@ -28,13 +28,12 @@
 	};
 
 	function handleAddTodo() {
-		if ($userStore.userRole === 'admin') modalStore.trigger(addTodoModal);
+		if ($userStore.role === 'admin') modalStore.trigger(addTodoModal);
 		else modalStore.trigger({ type: 'alert', title: 'You are not allowed to add todos' });
 	}
 </script>
 
-<h2 class="h2 mb-2">Todos Page</h2>
-
+<h2>Todos Page</h2>
 <hr class="w-full mt-2 mb-4" />
 
 <div class="flex gap-5 mb-2">

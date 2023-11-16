@@ -5,9 +5,9 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	const user = data.userWithoutId;
+	const user = data.user;
 
-	userStore.setUser({ name: user.name, userRole: user.role });
+	userStore.setUser({ name: user.name, role: user.role, username: user.username });
 
 	let nameInput = user.name;
 
@@ -16,7 +16,9 @@
 	};
 </script>
 
-<h2 class="h2">Profile</h2>
+<h2>Profile</h2>
+<hr class="w-full mt-2 mb-4" />
+
 <p>GitHub username: {user.username}</p>
 <form on:submit|preventDefault={handleUserChange} action="?/updateUser" method="POST" use:enhance>
 	<label>

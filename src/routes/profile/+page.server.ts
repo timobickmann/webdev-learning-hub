@@ -1,19 +1,14 @@
 import { auth } from '$lib/server/lucia';
 import { redirect, fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
-import type { User } from '@prisma/client';
 import { prismaClient } from '$lib/server/prisma';
+import { getUser } from '$lib/getUser';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	if (!session) throw redirect(302, '/login');
-	const _user = (await prismaClient.user.findUnique({
-		where: { id: session.user.userId }
-	})) as User;
-	const user = { ..._user, role: String(_user.role) };
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const { id, ...userWithoutId } = user;
-	return { userWithoutId };
+	const user = await getUser(locals);
+	return { user };
 };
 
 export const actions: Actions = {

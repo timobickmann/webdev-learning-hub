@@ -1,4 +1,5 @@
-<h1 class="h1">Code Page</h1>
+<h2>Code Page</h2>
+<hr class="w-full mt-2 mb-4" />
 
 <p>Code Snippets</p>
 

@@ -1,4 +1,5 @@
-<h2 class="h2">Project Board</h2>
+<h2>Project Board</h2>
+<hr class="w-full mt-2 mb-4" />
 
 <p>Choose project or add new project</p>
 

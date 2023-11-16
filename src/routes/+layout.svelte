@@ -9,17 +9,16 @@
 
 	//icons
 	import GithubIcon from '~icons/fa/github';
-	import UserIcon from '~icons/fa/user-circle';
 	import TwoDimensionalCodeTwoIcon from '~icons/icon-park-outline/two-dimensional-code-two';
 
 	onMount(async () => {
 		const response = await fetch('/api/user');
 		if (!response.ok) {
-			userStore.setUser({ name: 'Guest', userRole: 'guest' });
+			userStore.setUser({ name: 'Guest', role: 'guest', username: 'guest' });
 			return;
 		}
 		const data = await response.json();
-		userStore.setUser({ name: data.user.name, userRole: data.user.role });
+		userStore.setUser({ name: data.user.name, role: data.user.role, username: data.user.username });
 	});
 
 	initializeStores();

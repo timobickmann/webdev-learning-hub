@@ -26,7 +26,7 @@
 	};
 
 	function handleEditTodo() {
-		if ($userStore.userRole === 'admin') modalStore.trigger(editTodoModal);
+		if ($userStore.role === 'admin') modalStore.trigger(editTodoModal);
 		else modalStore.trigger({ type: 'alert', title: 'You are not allowed to edit todos' });
 	}
 
@@ -55,7 +55,7 @@
 		<button class="btn btn-sm variant-filled" on:click={handleEditTodo}>Edit</button>
 		<form on:submit|preventDefault action="?/deleteTodo" method="POST" use:enhance>
 			<input type="hidden" name="id" value={todo.id} />
-			{#if $userStore.userRole == 'admin'}
+			{#if $userStore.role == 'admin'}
 				<button type="submit" class="btn btn-sm variant-filled-error">Delete</button>
 			{:else}
 				<button type="button" class="btn btn-sm variant-filled-error" on:click={handleDeleteTodo}
