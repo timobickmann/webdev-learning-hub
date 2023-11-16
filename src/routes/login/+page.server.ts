@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 
 import type { PageServerLoad } from './$types';
-import { getUser } from '$lib/getUser';
+import { getUser } from '$lib/server/getUser';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();

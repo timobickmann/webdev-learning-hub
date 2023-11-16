@@ -1,5 +1,7 @@
 <script>
 	import { slide } from 'svelte/transition';
+	import ArrowIcon from '~icons/fa/angleLeft';
+
 	let isOpen = true;
 </script>
 
@@ -28,8 +30,13 @@
 			sidebar
 		</div>
 	{/if}
+
 	<button
 		on:click={() => (isOpen = !isOpen)}
-		class="flex items-center justify-center bg-red-500 w-20 h-20 rounded-full absolute top-1/2 -right-10 -translate-y-1/2 z-50"
-	/>
+		class="flex items-center justify-center w-10 h-screen rounded-full absolute hover:animate-pulse -top-16 -right-8"
+		style={`${!isOpen && "transform: scaleX(-1); transition: transform 0.5s ease-in-out;"}`}
+	>
+			<ArrowIcon class="h-8 text-surface-300" />
+	</button>
 </div>
+

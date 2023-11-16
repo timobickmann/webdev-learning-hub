@@ -17,6 +17,13 @@ model User {
   auth_session Session[]
   key          Key[]
   role         Role      @default(user)
+  projects     Project[]
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  owner        User @relation(references: [username], fields: [username], onDelete: Cascade)
+  username      String
 }
 
 model Session {
