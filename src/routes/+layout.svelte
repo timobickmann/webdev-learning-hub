@@ -6,6 +6,7 @@
 
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import Navigation from './Navigation.svelte';
+	import Sidebar from './Sidebar.svelte';
 
 	//icons
 	import GithubIcon from '~icons/fa/github';
@@ -40,7 +41,7 @@
 				<Navigation />
 				<span class="flex">
 					<a aria-label="User Profile" class="btn-icon hover:variant-soft-primary" href="/profile"
-						><Avatar class="w-8 h-8"/></a
+						><Avatar class="w-8 h-8" /></a
 					>
 					<a
 						aria-label="Github Repository"
@@ -48,14 +49,15 @@
 						href="https://github.com/timobickmann/webdev-learning-hub"
 						target="_blank"
 						rel="noopener noreferrer"
-						><GithubIcon class="h-8 w-8"/>
+						><GithubIcon class="h-8 w-8" />
 					</a></span
 				>
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
+	<svelte:fragment slot="sidebarLeft"><Sidebar /></svelte:fragment>
 	<main
-		class="w-[98%] sm:w-4/5 h-full mx-auto flex flex-col justify-start items-center text-center sm:text-left sm:items-start pt-8"
+		class="w-[98%] sm:w-4/5 h-full mx-auto flex flex-col justify-start items-center text-center sm:text-left sm:items-start pt-12"
 	>
 		<slot />
 	</main>
