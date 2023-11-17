@@ -45,7 +45,7 @@
 	"dependencies": {
 		"@lucia-auth/adapter-prisma": "^3.0.2",
 		"@lucia-auth/oauth": "^3.5.0",
-		"lucia": "^2.7.4",
-		"unplugin-icons": "^0.17.3"
+		"iconify-icon": "^1.0.8",
+		"lucia": "^2.7.4"
 	}
 }

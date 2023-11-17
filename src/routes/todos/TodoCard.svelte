@@ -1,6 +1,4 @@
 <script lang="ts">
-	import CalendarIcon from '~icons/fa/calendar';
-	import CommentIcon from '~icons/fa/comment';
 	import type { Todo } from '@prisma/client';
 	import { enhance } from '$app/forms';
 
@@ -39,7 +37,8 @@
 	<p class="font-bold">{todo.title}</p>
 	<div class="flex text-sm gap-2">
 		<div class="flex gap-1 items-center">
-			<CalendarIcon class="h-4 w-4" />
+			<iconify-icon icon="fa:calendar" width="16"></iconify-icon>
+
 			<!-- {todo.date} -->
 		</div>
 		<!-- {#if todo.comment}

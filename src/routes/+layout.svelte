@@ -5,12 +5,9 @@
 	import { onMount } from 'svelte';
 
 	import { Avatar } from '@skeletonlabs/skeleton';
+	import 'iconify-icon';
 	import Navigation from './Navigation.svelte';
 	import Sidebar from './Sidebar.svelte';
-
-	//icons
-	import GithubIcon from '~icons/fa/github';
-	import TwoDimensionalCodeTwoIcon from '~icons/icon-park-outline/two-dimensional-code-two';
 
 	onMount(async () => {
 		const response = await fetch('/api/user');
@@ -32,9 +29,9 @@
 		<AppBar class="drop-shadow-2xl">
 			<svelte:fragment slot="lead">
 				<a aria-label="Home" href="/"
-					><TwoDimensionalCodeTwoIcon
-						class="hover:rotate-180 duration-500 ease-in-out h-8 w-8"
-					/></a
+					>
+					<iconify-icon icon="icon-park-outline:two-dimensional-code-two" class="align-middle hover:rotate-180 duration-500 ease-in-out" width="32"></iconify-icon>
+					</a
 				>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
@@ -49,7 +46,7 @@
 						href="https://github.com/timobickmann/webdev-learning-hub"
 						target="_blank"
 						rel="noopener noreferrer"
-						><GithubIcon class="h-8 w-8" />
+						><iconify-icon icon="fa:github" width="32"></iconify-icon>
 					</a></span
 				>
 			</svelte:fragment>

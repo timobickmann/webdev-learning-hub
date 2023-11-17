@@ -1,7 +1,5 @@
 <script>
 	import { slide } from 'svelte/transition';
-	import ArrowIcon from '~icons/fa/angleLeft';
-
 	let isOpen = true;
 </script>
 
@@ -34,9 +32,9 @@
 	<button
 		on:click={() => (isOpen = !isOpen)}
 		class="flex items-center justify-center w-10 h-screen rounded-full absolute hover:animate-pulse -top-16 -right-8"
-		style={`${!isOpen && "transform: scaleX(-1); transition: transform 0.5s ease-in-out;"}`}
+		style={`${!isOpen && 'transform: scaleX(-1); transition: transform 0.5s ease-in-out;'}`}
 	>
-			<ArrowIcon class="h-8 text-surface-300" />
+	<iconify-icon width="24" class="text-surface-300" icon="fa6-solid:angle-left"></iconify-icon>
+
 	</button>
 </div>
-
